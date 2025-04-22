@@ -242,6 +242,7 @@ def init_app(app):
     from redash.authentication.google_oauth import (
         create_google_oauth_blueprint,
     )
+    from redash.authentication.cas import blueprint as cas_blueprint
 
     login_manager.init_app(app)
     login_manager.anonymous_user = models.AnonymousUser
@@ -260,6 +261,7 @@ def init_app(app):
         saml_auth.blueprint,
         remote_user_auth.blueprint,
         ldap_auth.blueprint,
+        cas_blueprint,
     ]:
         csrf.exempt(blueprint)
         app.register_blueprint(blueprint)

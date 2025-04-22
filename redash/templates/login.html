@@ -32,8 +32,12 @@
       <a href="{{ url_for('ldap_auth.login', org_slug=org_slug, next=next) }}" class="login-button btn btn-default btn-block">LDAP/SSO Login</a>
     {% endif %}
 
+    {% if show_cas_login %}
+      <a href="{{ url_for('cas_auth.cas_login', org_slug=org_slug, next=next) }}" class="login-button btn btn-default btn-block">CAS Login</a>
+    {% endif %}
+
     {% if show_password_login %}
-    {% if show_google_openid or show_saml_login or show_remote_user_login or show_ldap_login %}
+    {% if show_google_openid or show_saml_login or show_remote_user_login or show_ldap_login or show_cas_login %}
       <hr>
     {% endif %}
 
